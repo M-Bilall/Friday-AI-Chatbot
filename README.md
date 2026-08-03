@@ -20,6 +20,7 @@ Friday is a production-ready AI SaaS frontend and backend shell built with Next.
 - `SUPABASE_STORAGE_BUCKET`
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `DIRECT_URL`
 
 ## Commands
 

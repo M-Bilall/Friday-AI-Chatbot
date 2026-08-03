@@ -1,0 +1,104 @@
+@import "highlight.js/styles/github-dark.css";
+@import "tailwindcss";
+@import "./tokens.css";
+
+:root {
+  color-scheme: dark;
+  --background: 222 47% 4%;
+  --foreground: 210 40% 98%;
+  --card: 224 31% 7%;
+  --card-foreground: 210 40% 98%;
+  --popover: 224 31% 7%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 217 91% 60%;
+  --primary-foreground: 222 47% 4%;
+  --secondary: 264 83% 62%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 223 24% 15%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 223 24% 15%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 223 24% 18%;
+  --input: 223 24% 18%;
+  --ring: 217 91% 60%;
+  --radius: 1rem;
+  --glass: 222 47% 7% / 0.72;
+  --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+  --background: 210 40% 98%;
+  --foreground: 222 47% 8%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 8%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 8%;
+  --primary: 217 91% 55%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 264 83% 60%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 214 32% 91%;
+  --muted-foreground: 215 16% 40%;
+  --accent: 214 32% 91%;
+  --accent-foreground: 222 47% 8%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214 32% 88%;
+  --input: 214 32% 88%;
+  --ring: 217 91% 55%;
+  --glass: 0 0% 100% / 0.7;
+  --shadow-soft: 0 24px 80px rgba(15, 23, 42, 0.12);
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(59, 130, 246, 0.18), transparent 30%),
+    radial-gradient(circle at top right, rgba(139, 92, 246, 0.14), transparent 26%),
+    radial-gradient(circle at center bottom, rgba(15, 23, 42, 0.55), transparent 32%),
+    linear-gradient(180deg, hsl(var(--background)), hsl(var(--background)));
+  color: hsl(var(--foreground));
+  font-feature-settings: 'ss01' on, 'cv10' on;
+}
+
+::selection {
+  background: rgba(59, 130, 246, 0.35);
+  color: white;
+}
+
+.bg-grid {
+  background-image: linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* glass-panel defined in tokens.css */
+
+.text-balance {
+  text-wrap: balance;
+}

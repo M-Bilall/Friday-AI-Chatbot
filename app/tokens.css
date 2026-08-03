@@ -1,0 +1,38 @@
+/* Design tokens for Friday UI */
+:root {
+  /* Core palette (HSL for easy theming) */
+  --color-primary-h: 217;
+  --color-primary-s: 91%;
+  --color-primary-l: 60%;
+
+  --color-background-h: 222;
+  --color-background-s: 47%;
+  --color-background-l: 4%;
+
+  --color-surface-h: 224;
+  --color-surface-s: 31%;
+  --color-surface-l: 7%;
+
+  --color-glass-opacity: 0.72;
+  --color-glass-blur: 22px;
+
+  /* Radii */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  /* Shadows */
+  --shadow-glass: 0 24px 80px rgba(0, 0, 0, 0.35);
+
+  /* Animation */
+  --animation-duration: 250ms;
+  --animation-easing: cubic-bezier(0.4,0,0.2,1);
+}
+
+/* Utility classes */
+.glass-panel {
+  background: hsla(var(--color-background-h) var(--color-background-s) var(--color-background-l) / var(--color-glass-opacity));
+  backdrop-filter: blur(var(--color-glass-blur));
+  box-shadow: var(--shadow-glass);
+  border-radius: var(--radius-md);
+}
