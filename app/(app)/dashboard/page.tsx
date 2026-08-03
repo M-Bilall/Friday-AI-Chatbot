@@ -26,6 +26,7 @@ export default async function DashboardPage() {
           <div className="space-y-2">
             <Badge variant="outline" className="border-white/10 bg-white/[0.04] text-white/70">Welcome back</Badge>
             <h1 className="font-[family-name:var(--font-display)] text-4xl font-semibold tracking-tight text-white sm:text-5xl">Your Friday workspace</h1>
+            
             <p className="max-w-2xl text-sm leading-7 text-white/55">Monitor activity, jump into conversations, and manage the settings that shape your AI assistant workflow.</p>
           </div>
           <Button asChild className="rounded-full px-5">
@@ -59,8 +60,12 @@ export default async function DashboardPage() {
               dashboard.recentConversations.map((conversation: DashboardConversation) => (
                 <Link key={conversation.id} href={`/chat?conversation=${conversation.id}`} className="flex items-center justify-between rounded-3xl border border-white/10 bg-white/[0.03] px-4 py-4 transition-colors hover:bg-white/[0.06]">
                   <div>
-                    <p className="font-medium text-white">{conversation.title}</p>
-                    <p className="mt-1 text-sm text-white/50">{conversation.summary ?? conversation.messages?.[0]?.content ?? 'No preview available.'}</p>
+                    {/* ...existing code... */}
+<p className="mt-1 text-sm text-white/50">
+  {conversation.summary ?? "No preview available."}
+</p>
+{/* ...existing code... */}
+
                   </div>
                   <div className="text-right text-xs text-white/45">
                     <p>{conversation.lastMessageAt ? new Date(conversation.lastMessageAt).toLocaleDateString() : 'Today'}</p>

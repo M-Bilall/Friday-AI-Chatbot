@@ -2,7 +2,13 @@ import 'server-only';
 
 import { prisma } from '@/lib/prisma';
 
-export type DashboardConversation = Awaited<ReturnType<typeof prisma.conversation.findMany>>[number];
+import type { Prisma } from '@prisma/client';
+
+export type DashboardConversation = Prisma.ConversationGetPayload<{
+  include: {
+    messages: true;
+  };
+}>;
 
 export async function getDashboardData(userId: string) {
   const [totalConversations, totalMessages, pinnedConversations, favoriteConversations, recentConversations] = await Promise.all([

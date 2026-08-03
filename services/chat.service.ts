@@ -1,11 +1,13 @@
 import 'server-only';
 
 import { prisma } from '@/lib/prisma';
+import type { Prisma } from '@prisma/client';
 import { createConversation, getConversationOrThrow } from '@/services/conversations.service';
 import { sendMessageToN8n } from '@/lib/n8n';
 
 import type { SendMessageInput } from '@/features/chat/chat.schema';
 
+type ConversationWithMessages = Prisma.ConversationGetPayload<{ include: { messages: true } }>;
 type ChatTurnParams = {
   user: {
     id: string;
@@ -16,13 +18,13 @@ type ChatTurnParams = {
 };
 
 export async function runChatTurn({ user, input }: ChatTurnParams) {
-  const conversation = input.conversationId
+  const conversation: ConversationWithMessages = input.conversationId
     ? await getConversationOrThrow(user.id, input.conversationId)
-    : await createConversation(user.id, {
+    : (await createConversation(user.id, {
         title: 'New conversation',
         workspaceId: input.workspaceId,
         model: input.model
-      });
+      })) as any;
 
   const userMessage = await prisma.message.create({
     data: {
