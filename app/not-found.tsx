@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { Route } from 'next';
 
 import { Button } from '@/components/ui/button';
 
@@ -10,7 +11,7 @@ export default function NotFound() {
         <h1 className="mt-3 text-3xl font-semibold">Page not found</h1>
         <p className="mt-3 text-sm text-muted-foreground">The requested route does not exist or has moved.</p>
         <Button asChild className="mt-6">
-          <Link href="/">Return home</Link>
+          <Link href={"/" as Route}>Return home</Link>
         </Button>
       </div>
     </div>
