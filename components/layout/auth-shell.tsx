@@ -9,7 +9,7 @@ export function AuthShell({ children, eyebrow, title, description }: { children:
       <section className="relative overflow-hidden border-r border-white/10 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.18),transparent_34%),radial-gradient(circle_at_center,rgba(168,85,247,0.12),transparent_30%),linear-gradient(180deg,hsl(var(--background)),hsl(var(--background)))] px-6 py-8 sm:px-10 lg:px-12">
         <div className="absolute inset-0 bg-grid opacity-15" />
         <div className="relative flex h-full flex-col justify-between gap-12">
-          <Link href="/">
+          <Link href="/dashboard">
             <Logo />
           </Link>
           <div className="max-w-xl space-y-6">
