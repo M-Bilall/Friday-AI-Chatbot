@@ -33,6 +33,7 @@ export function AppShell({ children, user }: { children: ReactNode; user: { name
     if (supabase) {
       await supabase.auth.signOut();
     }
+    // @ts-ignore
     router.push("/");
     router.refresh();
   }
