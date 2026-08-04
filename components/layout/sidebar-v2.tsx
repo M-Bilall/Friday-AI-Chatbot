@@ -42,11 +42,11 @@ export function SidebarV2({ user }: { user: { name: string; email: string; avata
   };
 
   return (
-    <aside className="hidden lg:flex lg:flex-col border-r border-white/10 bg-[#0d1016]/85 shadow-[0_20px_80px_rgba(0,0,0,0.26)] backdrop-blur-xl">
+    <aside className="hidden lg:flex lg:flex-col border-r border-border/70 bg-card/80 shadow-[var(--shadow-soft)] backdrop-blur-xl">
       <div className="flex h-20 items-center justify-between px-6">
         <div>
-          <div className="font-[family-name:var(--font-display)] text-xl font-semibold text-white">Friday</div>
-          <p className="text-[11px] uppercase tracking-[0.24em] text-white/40">AI workspace</p>
+          <div className="font-[family-name:var(--font-display)] text-xl font-semibold text-foreground">Friday</div>
+          <p className="text-[11px] uppercase tracking-[0.24em] text-muted-foreground">AI workspace</p>
         </div>
         <ThemeToggle />
       </div>
@@ -65,7 +65,7 @@ export function SidebarV2({ user }: { user: { name: string; email: string; avata
                 href={item.href as Route}
                 className={cn(
                   'flex items-center gap-3 rounded-2xl px-4 py-3 text-sm transition-colors',
-                  active ? 'border border-white/10 bg-white/10 text-white' : 'border border-transparent text-white/55 hover:border-white/10 hover:bg-white/6 hover:text-white'
+                  active ? 'border border-border bg-accent text-accent-foreground' : 'border border-transparent text-muted-foreground hover:border-border hover:bg-accent hover:text-accent-foreground'
                 )}
               >
                 <item.icon className="h-4 w-4" />
@@ -76,8 +76,8 @@ export function SidebarV2({ user }: { user: { name: string; email: string; avata
         })}
       </nav>
       {/* User Card */}
-      <div className="border-t border-white/10 p-4">
-        <div className="flex items-center gap-3 rounded-3xl border border-white/10 bg-white/[0.04] p-3">
+      <div className="border-t border-border/70 p-4">
+        <div className="flex items-center gap-3 rounded-3xl border border-border bg-background/80 p-3 shadow-[var(--shadow-soft)]">
           <Avatar>
             {user.avatarUrl ? (
               <AvatarImage src={user.avatarUrl} alt={user.name} />
@@ -86,10 +86,10 @@ export function SidebarV2({ user }: { user: { name: string; email: string; avata
             )}
           </Avatar>
           <div className="min-w-0 flex-1">
-            <p className="truncate text-sm font-medium text-white">{user.name}</p>
-            <p className="truncate text-xs text-white/45">{user.email}</p>
+            <p className="truncate text-sm font-medium text-foreground">{user.name}</p>
+            <p className="truncate text-xs text-muted-foreground">{user.email}</p>
           </div>
-          <Button variant="ghost" size="icon" onClick={signOut} aria-label="Sign out" className="text-white/70 hover:bg-white/8 hover:text-white">
+          <Button variant="ghost" size="icon" onClick={signOut} aria-label="Sign out">
             <LogOut className="h-4 w-4" />
           </Button>
         </div>

@@ -133,9 +133,9 @@ export function AuthForm({ mode }: { mode: Mode }) {
   }
 
   return (
-    <Card className="glass-panel border-white/10 bg-[hsl(var(--card)/0.86)]">
+    <Card className="bg-card/90 shadow-[var(--shadow-soft)] backdrop-blur-xl">
       <CardHeader>
-        <CardTitle className="font-[family-name:var(--font-display)] text-3xl">
+        <CardTitle className="font-[family-name:var(--font-display)] text-3xl text-foreground">
           {mode === 'login' ? 'Welcome back' : mode === 'signup' ? 'Create your account' : 'Reset your password'}
         </CardTitle>
         <CardDescription>
@@ -146,7 +146,7 @@ export function AuthForm({ mode }: { mode: Mode }) {
               : 'We will send a password reset link to your email.'}
         </CardDescription>
         {!supabase ? (
-          <p className="rounded-2xl border border-amber-500/20 bg-amber-500/10 px-4 py-3 text-sm text-amber-300">
+          <p className="rounded-2xl border border-border bg-muted px-4 py-3 text-sm text-muted-foreground">
             Supabase public variables are missing, so auth actions are disabled until .env.local is configured.
           </p>
         ) : null}

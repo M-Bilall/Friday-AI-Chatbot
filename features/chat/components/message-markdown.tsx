@@ -25,12 +25,12 @@ function CodeBlock({ className, children }: { className?: string; children: Reac
         variant="ghost"
         size="sm"
         onClick={copyCode}
-        className="absolute right-3 top-3 z-10 h-8 rounded-full border border-white/10 bg-[#0d1622]/85 px-3 text-xs text-white/70 opacity-0 shadow-lg shadow-black/25 backdrop-blur group-hover:opacity-100"
+        className="absolute right-3 top-3 z-10 h-8 rounded-full border border-border bg-background/95 px-3 text-xs text-foreground opacity-0 shadow-lg shadow-black/10 backdrop-blur group-hover:opacity-100"
       >
         {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
         {copied ? 'Copied' : 'Copy'}
       </Button>
-      <pre className="overflow-x-auto rounded-[1.35rem] border border-white/10 bg-[#07101b] p-4 text-sm leading-7 text-slate-100 shadow-inner shadow-black/30">
+      <pre className="overflow-x-auto rounded-[1.35rem] border border-border bg-muted p-4 text-sm leading-7 text-foreground shadow-inner shadow-black/10">
         <code className={className} {...{ children }}>
           {children}
         </code>
@@ -48,7 +48,7 @@ export function MessageMarkdown({ content }: { content: string }) {
         code({ className, children, ...props }) {
           const isInline = !className;
           return isInline ? (
-            <code className="rounded-md border border-white/10 bg-white/5 px-1.5 py-0.5 font-mono text-[0.92em] text-white" {...props}>
+            <code className="rounded-md border border-border bg-muted px-1.5 py-0.5 font-mono text-[0.92em] text-foreground" {...props}>
               {children}
             </code>
           ) : (
@@ -56,14 +56,14 @@ export function MessageMarkdown({ content }: { content: string }) {
           );
         },
         pre({ children }) {
-          return <pre className="overflow-x-auto rounded-[1.35rem] border border-white/10 bg-[#07101b] p-4 text-sm leading-7 text-slate-100 shadow-inner shadow-black/30">{children}</pre>;
+          return <pre className="overflow-x-auto rounded-[1.35rem] border border-border bg-muted p-4 text-sm leading-7 text-foreground shadow-inner shadow-black/10">{children}</pre>;
         },
         p({ children }) {
-          return <p className="whitespace-pre-wrap leading-7 text-white/90">{children}</p>;
+          return <p className="whitespace-pre-wrap leading-7 text-foreground">{children}</p>;
         },
         a({ children, href }) {
           return (
-            <a href={href} className="text-sky-300 underline-offset-4 hover:underline" target="_blank" rel="noreferrer">
+            <a href={href} className="text-primary underline-offset-4 hover:underline" target="_blank" rel="noreferrer">
               {children}
             </a>
           );

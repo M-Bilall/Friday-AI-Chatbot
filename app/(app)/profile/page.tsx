@@ -11,7 +11,8 @@ export default async function ProfilePage() {
     <div className="space-y-6">
       <div className="space-y-2">
         <Badge variant="outline">Profile</Badge>
-        <h1 className="font-[family-name:var(--font-display)] text-4xl font-semibold tracking-tight">Identity and account details.</h1>
+        <h1 className="font-[family-name:var(--font-display)] text-4xl font-semibold tracking-tight text-foreground">Identity and account details.</h1>
+        <p className="max-w-2xl text-sm leading-7 text-muted-foreground">Keep your account identity, avatar, and company metadata consistent across Friday.</p>
       </div>
       <ProfileForm
         initialValues={{
