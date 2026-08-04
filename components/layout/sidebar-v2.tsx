@@ -32,7 +32,7 @@ export function SidebarV2({ user }: { user: { name: string; email: string; avata
     if (supabase) {
       await supabase.auth.signOut();
     }
-    router.push('/');
+    router.push("/" as Route);
     router.refresh();
   }
 

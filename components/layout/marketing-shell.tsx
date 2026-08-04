@@ -18,7 +18,7 @@ export function MarketingShell({ children }: { children: ReactNode }) {
     <div className="min-h-screen">
       <header className="sticky top-0 z-40 border-b border-white/10 bg-[#090b10]/80 backdrop-blur-xl">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 sm:px-10 lg:px-12">
-          <Link href="/" aria-label="Friday home">
+          <Link href="/dashboard" aria-label="Friday Dashboard">
             <Logo />
           </Link>
           <nav className="hidden items-center gap-8 md:flex">

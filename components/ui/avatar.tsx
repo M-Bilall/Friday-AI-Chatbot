@@ -6,8 +6,23 @@ function Avatar({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return <div className={cn('relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full border border-border bg-muted', className)} {...props} />;
 }
 
-function AvatarImage({ className, alt, ...props }: React.ImgHTMLAttributes<HTMLImageElement>) {
-  return <img className={cn('aspect-square h-full w-full object-cover', className)} alt={alt} {...props} />;
+import Image from 'next/image';
+
+type AvatarImageProps = {
+  src: string;
+  alt: string;
+  className?: string;
+};
+
+function AvatarImage({ src, alt, className }: AvatarImageProps) {
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      className={cn('aspect-square h-full w-full object-cover', className)}
+    />
+  );
 }
 
 function AvatarFallback({ className, ...props }: React.HTMLAttributes<HTMLSpanElement>) {
