@@ -5,7 +5,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { requireAuthenticatedUser } from '@/lib/auth';
 import { listConversations } from '@/services/conversations.service';
-import type { DashboardConversation } from '@/services/dashboard.service';
 
 export default async function HistoryPage() {
   const user = await requireAuthenticatedUser();
@@ -24,11 +23,11 @@ export default async function HistoryPage() {
           <CardDescription className="text-white/50">{conversations.length} threads found</CardDescription>
         </CardHeader>
         <CardContent className="space-y-3 p-6">
-          {conversations.map((conversation: DashboardConversation) => (
+          {conversations.map((conversation) => (
             <Link key={conversation.id} href={`/chat?conversation=${conversation.id}`} className="flex items-center justify-between rounded-3xl border border-white/10 bg-white/[0.03] px-4 py-4 transition-colors hover:bg-white/[0.06]">
               <div>
                 <p className="font-medium text-white">{conversation.title}</p>
-                <p className="mt-1 text-sm text-white/50">{conversation.summary ?? conversation.messages?.[0]?.content ?? 'No preview available.'}</p>
+                <p className="mt-1 text-sm text-white/50">{conversation.summary ?? 'No preview available.'}</p>
               </div>
               <Button variant="outline" size="sm" className="rounded-full border-white/10 bg-white/[0.03] text-white hover:bg-white/[0.06]">Open</Button>
             </Link>

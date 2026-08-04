@@ -20,11 +20,16 @@ type ChatTurnParams = {
 export async function runChatTurn({ user, input }: ChatTurnParams) {
   const conversation: ConversationWithMessages = input.conversationId
     ? await getConversationOrThrow(user.id, input.conversationId)
-    : (await createConversation(user.id, {
-        title: 'New conversation',
-        workspaceId: input.workspaceId,
-        model: input.model
-      })) as any;
+    : await getConversationOrThrow(
+        user.id,
+        (
+          await createConversation(user.id, {
+            title: 'New conversation',
+            workspaceId: input.workspaceId,
+            model: input.model
+          })
+        ).id
+      );
 
   const userMessage = await prisma.message.create({
     data: {

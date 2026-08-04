@@ -12,7 +12,6 @@ import {
 } from '@/components/ui/card';
 import { requireAuthenticatedUser } from '@/lib/auth';
 import { getDashboardData } from '@/services/dashboard.service';
-import type { DashboardConversation } from '@/services/dashboard.service';
 
 export default async function DashboardPage() {
   const user = await requireAuthenticatedUser();
@@ -89,43 +88,23 @@ export default async function DashboardPage() {
 
           <CardContent className="space-y-3">
             {dashboard.recentConversations.length ? (
-              dashboard.recentConversations.map(
-                (conversation: DashboardConversation) => (
-                  <Link
-                    key={conversation.id}
-                    href={`/chat?conversation=${conversation.id}`}
-                    className="flex items-center justify-between rounded-3xl border border-white/10 bg-white/[0.03] px-4 py-4 transition-colors hover:bg-white/[0.06]"
-                  >
-                    <div>
-                      <p className="font-medium text-white">
-                        {conversation.title}
-                      </p>
+              dashboard.recentConversations.map((conversation) => (
+                <Link
+                  key={conversation.id}
+                  href={`/chat?conversation=${conversation.id}`}
+                  className="flex items-center justify-between rounded-3xl border border-white/10 bg-white/[0.03] px-4 py-4 transition-colors hover:bg-white/[0.06]"
+                >
+                  <div>
+                    <p className="font-medium text-white">{conversation.title}</p>
+                    <p className="mt-1 text-sm text-white/50">{conversation.summary ?? 'No preview available.'}</p>
+                  </div>
 
-                      <p className="mt-1 text-sm text-white/50">
-                        {conversation.summary ?? "No preview available."}
-                      </p>
-                    </div>
-
-                    <div className="text-right text-xs text-white/45">
-                      <p>
-                        {conversation.lastMessageAt
-                          ? new Date(
-                              conversation.lastMessageAt
-                            ).toLocaleDateString()
-                          : "Today"}
-                      </p>
-
-                      <p>
-                        {conversation.isPinned
-                          ? "Pinned"
-                          : conversation.isFavorite
-                            ? "Favorite"
-                            : "Active"}
-                      </p>
-                    </div>
-                  </Link>
-                )
-              )
+                  <div className="text-right text-xs text-white/45">
+                    <p>{conversation.lastMessageAt ? new Date(conversation.lastMessageAt).toLocaleDateString() : 'Today'}</p>
+                    <p>{conversation.isPinned ? 'Pinned' : conversation.isFavorite ? 'Favorite' : 'Active'}</p>
+                  </div>
+                </Link>
+              ))
             ) : (
               <div className="rounded-3xl border border-dashed border-white/10 p-8 text-center text-sm text-white/50">
                 No conversations yet. Start one from chat.
