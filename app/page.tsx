@@ -1,8 +1,10 @@
+import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowRight, Bot, BrainCircuit, ShieldCheck, Sparkles } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { getAuthenticatedSupabaseUser } from '@/lib/auth';
 
 const features = [
   {
@@ -22,7 +24,13 @@ const features = [
   }
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const user = await getAuthenticatedSupabaseUser();
+
+  if (user) {
+    redirect('/dashboard');
+  }
+
   return (
     <main className="min-h-screen overflow-hidden">
       <section className="relative isolate">
